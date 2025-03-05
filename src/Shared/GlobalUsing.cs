@@ -1,0 +1,14 @@
+global using MediatR;
+global using Microsoft.Extensions.DependencyInjection;
+global using FluentValidation;
+global using FluentValidation.Results;
+global using Shared.Contracts.CQRS;
+global using Microsoft.AspNetCore.Http;
+global using Microsoft.AspNetCore.Mvc;
+global using Microsoft.Extensions.Logging;
+global using System.Reflection;
+global using Carter;
+global using Shared.Behaviors;
+global using Shared.Contracts;
+global using Microsoft.AspNetCore.Builder;
+global using Microsoft.EntityFrameworkCore;
