@@ -32,33 +32,25 @@ Este proyecto es una API CRUD desarrollada en .NET 8. Proporciona una estructura
 
 Para construir y ejecutar la API localmente:
 
-1. Construye el proyecto:
-    ```sh
-    dotnet build
-    ```
-
-2. Ejecuta la API:
-    ```sh
-    dotnet run --project src/Bootstrapper/Api/Api.csproj
-    ```
-
-### Con Docker
-
 Para construir la imagen de la database:
 
 1. Construye la imagen de Docker y levantarlo:
     ```sh
     docker-compose up -d
     ```
+2. Construye el proyecto:
+    ```sh
+    dotnet build
+    ```
+
+3. Ejecuta la API:
+    ```sh
+    dotnet run --project src/Bootstrapper/Api/Api.csproj
+    ```
 
 ## Uso
 
 La API expone los siguientes endpoints:
-
-- `POST /api/roles`: Crea un nuevo rol.
-- `GET /api/roles`: Obtener listado de roles.
-- `PUT /api/roles`: Actualizar un rol.
-- `PUT /api/roles/{id}`: eliminiar un rol.
 
 ## Pruebas
 
