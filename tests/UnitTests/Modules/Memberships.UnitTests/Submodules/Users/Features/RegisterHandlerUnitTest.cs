@@ -3,10 +3,6 @@ using Memberships.Submodules.Users.Contracts.Services;
 using Memberships.Submodules.Users.Dtos;
 using Memberships.Submodules.Users.Exceptions;
 using Memberships.Submodules.Users.Features.Register;
-using Microsoft.EntityFrameworkCore;
-using Moq;
-using Shared.Exceptions;
-using FluentValidation.TestHelper;
 
 namespace Memberships.UnitTests.Submodules.Users.Features;
 
