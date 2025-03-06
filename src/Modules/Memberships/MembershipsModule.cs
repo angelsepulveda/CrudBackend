@@ -1,3 +1,4 @@
+using Memberships.Submodules.Users;
 using Shared.Data.Interceptors;
 
 namespace Memberships;
@@ -37,6 +38,8 @@ public static class MembershipsModule
 
     private static IServiceCollection AddMembershipSubModules(this IServiceCollection services)
     {
+        services.AddSubModuleUsers();
+
         return services;
     }
 }
