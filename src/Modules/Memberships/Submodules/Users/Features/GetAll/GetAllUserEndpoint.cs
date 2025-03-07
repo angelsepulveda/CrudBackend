@@ -7,7 +7,7 @@ public class GetAllUserEndpoint : ICarterModule
     public void AddRoutes(IEndpointRouteBuilder app)
     {
         app.MapGet(
-                "/api/roles",
+                "/api/users",
                 async (ISender sender) =>
                 {
                     List<UserDto> roles = await sender.Send(new GetAllUserQuery());
