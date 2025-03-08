@@ -8,6 +8,12 @@ public class UpdateRoleEndpoint : ICarterModule
                 "/api/users",
                 async (UpdateUserPayload payload, ISender sender) =>
                 {
+                    Log.Information(
+                        "Endpoint: {Endpoint}, payload: {Payload}",
+                        nameof(UpdateRoleEndpoint),
+                        JsonSerializer.Serialize(payload)
+                    );
+
                     Unit result = await sender.Send(new UpdateUserCommand(payload));
 
                     return Results.Ok(result);

@@ -21,17 +21,47 @@ public sealed class DeleteUserHandler(
 {
     public async Task<Unit> Handle(DeleteUserCommand request, CancellationToken cancellationToken)
     {
+        string feature = nameof(DeleteUserHandler);
+
+        Log.Information(
+            "Inicio proceso de eliminación usuario id: {UserId}, feature: {Feature}",
+            request.Id,
+            feature
+        );
+
         User userDeleted = await getByIdUserService.HandleAsync(new UserId(request.Id));
+
+        Log.Information(
+            "se obtuvo el usuario id: {UserId}, Estado: {Usuario} feature: {Feature}",
+            request.Id,
+            userDeleted.Enable,
+            feature
+        );
 
         userDeleted.Delete();
 
         dbContext.Users.Update(userDeleted);
 
-        int result = await dbContext.SaveChangesAsync(cancellationToken);
+        int result;
+
+        result = await dbContext.SaveChangesAsync(cancellationToken);
 
         if (result == 0)
+        {
+            Log.Error(
+                "No se pudo eliminar el usuario con id: {UserId}, feature: {Feature}",
+                userDeleted.Id.Value,
+                feature
+            );
             throw new BadRequestException("No se pudo eliminar el usuario");
+        }
 
+        Log.Information(
+            "Se eliminó exitosamente el usuario con id: {UserId}, estado: {UserState}, feature: {Feature}",
+            userDeleted.Id.Value,
+            userDeleted.Enable,
+            feature
+        );
         return Unit.Value;
     }
 }

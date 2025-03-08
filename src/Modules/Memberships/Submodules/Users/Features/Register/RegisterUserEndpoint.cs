@@ -10,6 +10,12 @@ public class RegisterRoleEndpoint : ICarterModule
                 "/api/users",
                 async (RegisterUserPayload payload, ISender sender) =>
                 {
+                    string endpoint = nameof(RegisterRoleEndpoint);
+                    Log.Information(
+                        "Endpoint: {Endpoint}, payload: {Payload}",
+                        endpoint,
+                        JsonSerializer.Serialize(payload)
+                    );
                     UserDto result = await sender.Send(new RegisterUserCommand(payload));
 
                     return Results.Ok(result);

@@ -12,3 +12,6 @@ global using Shared.Behaviors;
 global using Shared.Contracts;
 global using Microsoft.AspNetCore.Builder;
 global using Microsoft.EntityFrameworkCore;
+global using System.Text.Json;
+global using Serilog;
+global using Shared.Constants;

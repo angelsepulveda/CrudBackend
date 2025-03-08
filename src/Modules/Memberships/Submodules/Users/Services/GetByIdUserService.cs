@@ -12,7 +12,7 @@ public class GetByIdUserService(MembershipDbContext dbContext) : IGetByIdUserSer
         User? user = await dbContext.Users.Where(x => x.Id == id && x.Enable).FirstOrDefaultAsync();
 
         if (user is null)
-            throw new UserNotFoundException();
+            throw new UserNotFoundException(id);
 
         return user;
     }

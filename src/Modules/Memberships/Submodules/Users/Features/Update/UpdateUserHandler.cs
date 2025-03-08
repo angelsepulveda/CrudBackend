@@ -38,7 +38,21 @@ public sealed class UpdateUserHandler(
 {
     public async Task<Unit> Handle(UpdateUserCommand request, CancellationToken cancellationToken)
     {
+        string feature = nameof(UpdateUserHandler);
+
+        Log.Information(
+            "Feature: {Feature}, inició de actualización de usuario request: {Request}",
+            feature,
+            JsonSerializer.Serialize(request)
+        );
+
         User userUpdated = await getByIdUserService.HandleAsync(new UserId(request.Payload.Id));
+
+        Log.Information(
+            "Feature: {Feature}, usuario a actualizar request: {Request}",
+            feature,
+            JsonSerializer.Serialize(userUpdated)
+        );
 
         User? userExists = await getByRutUserService.HandleAsync(request.Payload.Rut);
 
@@ -57,7 +71,14 @@ public sealed class UpdateUserHandler(
         int result = await dbContext.SaveChangesAsync(cancellationToken);
 
         if (result == 0)
+        {
+            Log.Error(
+                "Feature: {Feature}, no se pudo actualizar el usuario: {User}",
+                feature,
+                JsonSerializer.Serialize(userUpdated)
+            );
             throw new BadRequestException("No se pudo actualizar el usuario");
+        }
 
         return Unit.Value;
     }

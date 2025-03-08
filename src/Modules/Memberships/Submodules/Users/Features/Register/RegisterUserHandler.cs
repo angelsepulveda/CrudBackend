@@ -39,6 +39,14 @@ public sealed class RegisterUserHandler(
         CancellationToken cancellationToken
     )
     {
+        string feature = nameof(RegisterUserHandler);
+
+        Log.Information(
+            "Feature: {Feature}, inicio de resgistro de usuario request: {Request}",
+            feature,
+            JsonSerializer.Serialize(request)
+        );
+
         User? userExists = await getByRutUserService.HandleAsync(request.Payload.Rut);
 
         if (userExists is not null)
@@ -51,12 +59,25 @@ public sealed class RegisterUserHandler(
             birthdate: request.Payload.BirthDate
         );
 
+        Log.Information(
+            "Feature: {Feature}, sea creó el usuario: {User}",
+            feature,
+            JsonSerializer.Serialize(user)
+        );
+
         dbContext.Users.Add(user);
 
         int result = await dbContext.SaveChangesAsync(cancellationToken);
 
         if (result == 0)
+        {
+            Log.Error(
+                "Feature: {Feature}, no se pudo registrar el usuario: {User}",
+                feature,
+                JsonSerializer.Serialize(user)
+            );
             throw new BadRequestException("No se pudo registrar el usuario");
+        }
 
         return new UserDto(
             Id: user.Id.Value,

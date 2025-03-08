@@ -1,3 +1,5 @@
+using Shared.Exceptions.Loggers;
+
 namespace Shared.Exceptions.Handler;
 
 public class ExceptionMiddleware
@@ -28,10 +30,10 @@ public class ExceptionMiddleware
     {
         (string Detail, string Title, int StatusCode) = exception switch
         {
-            InternalServerException
+            InternalServerException internalServerException
                 => (
-                    exception.Message,
-                    exception.GetType().Name,
+                    LoggerExceptionHandler.LogInternalServerException(internalServerException),
+                    internalServerException.GetType().Name,
                     context.Response.StatusCode = StatusCodes.Status500InternalServerError
                 ),
             ValidationException
@@ -54,13 +56,13 @@ public class ExceptionMiddleware
                 ),
             _
                 => (
-                    exception.Message,
+                    LoggerExceptionHandler.LogException(exception),
                     exception.GetType().Name,
                     context.Response.StatusCode = StatusCodes.Status500InternalServerError
                 )
         };
 
-        var problemDetails = new ProblemDetails
+        ProblemDetails problemDetails = new ProblemDetails
         {
             Title = Title,
             Detail = Detail,

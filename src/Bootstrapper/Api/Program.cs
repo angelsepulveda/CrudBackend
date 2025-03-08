@@ -23,6 +23,10 @@ builder.Services.AddCors(options =>
     );
 });
 
+builder.Host.UseSerilog(
+    (context, configuration) => configuration.ReadFrom.Configuration(context.Configuration)
+);
+
 WebApplication app = builder.Build();
 
 // Configure the HTTP request pipeline.
