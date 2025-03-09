@@ -2,8 +2,6 @@ using System.Text.Json.Nodes;
 using Memberships.Submodules.Users.Contracts.Services;
 using Memberships.Submodules.Users.Dtos;
 
-namespace Memberships.Submodules.Users.Services;
-
 internal sealed class ValidateGoogleTokenService : IValidateTokenService
 {
     public async Task<UserProfileDto> HandleAsync(string token)
