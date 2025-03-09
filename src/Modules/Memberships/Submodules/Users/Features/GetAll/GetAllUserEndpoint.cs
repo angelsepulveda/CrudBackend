@@ -18,10 +18,10 @@ public class GetAllUserEndpoint : ICarterModule
             .WithName("GetAllUser")
             .Produces<List<UserDto>>(StatusCodes.Status200OK)
             .ProducesProblem(StatusCodes.Status500InternalServerError)
-            .WithSummary("Retrieve all users")
+            .WithSummary("Obtener todos los usuarios")
             .WithDescription(
-                "This endpoint retrieves a list of all users available in the system. "
-                    + "It returns a list of user details upon successful retrieval."
+                "Este endpoint recupera una lista de todos los usuarios disponibles en el sistema. "
+                    + "Devuelve una lista con los detalles de los usuarios al ser exitosamente recuperados."
             )
             .WithTags("Users");
     }

@@ -14,6 +14,7 @@ public class DeleteUserHandlerTests
     public DeleteUserHandlerTests()
     {
         // Usamos un DbContext en memoria para pruebas
+
         var options = new DbContextOptionsBuilder<MembershipDbContext>()
             .UseInMemoryDatabase(databaseName: Guid.NewGuid().ToString())
             .Options;

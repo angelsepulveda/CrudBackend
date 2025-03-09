@@ -18,10 +18,10 @@ public class DeleteUserEndpoint : ICarterModule
             .ProducesProblem(StatusCodes.Status400BadRequest)
             .ProducesProblem(StatusCodes.Status404NotFound)
             .ProducesProblem(StatusCodes.Status500InternalServerError)
-            .WithSummary("Delete a User")
+            .WithSummary("Eliminar un usuario")
             .WithDescription(
-                "This endpoint allows you to delete an existing user by providing the user ID in the URL. "
-                    + "It returns a status indicating whether the deletion was successful."
+                "Este endpoint permite eliminar un usuario existente proporcionando el ID del usuario en la URL. "
+                    + "Devuelve un estado que indica si la eliminación fue exitosa."
             )
             .WithTags("Users");
     }

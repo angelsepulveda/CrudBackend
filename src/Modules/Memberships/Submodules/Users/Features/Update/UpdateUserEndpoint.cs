@@ -24,9 +24,9 @@ public class UpdateRoleEndpoint : ICarterModule
             .ProducesProblem(StatusCodes.Status400BadRequest)
             .ProducesProblem(StatusCodes.Status404NotFound)
             .ProducesProblem(StatusCodes.Status500InternalServerError)
-            .WithSummary("Update a User")
+            .WithSummary("Actualizar un usuario")
             .WithDescription(
-                "Updates the details of an existing user based on the provided payload. The payload must include the user ID and the new name, etc."
+                "Actualiza los detalles de un usuario existente basado en el payload proporcionado. El payload debe incluir el ID del usuario y el nuevo nombre, etc."
             )
             .WithTags("Users");
     }

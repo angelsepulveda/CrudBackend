@@ -24,11 +24,11 @@ public class RegisterRoleEndpoint : ICarterModule
             .WithName("RegisterUser")
             .Produces<UserDto>(StatusCodes.Status200OK)
             .ProducesProblem(StatusCodes.Status400BadRequest)
-            .WithSummary("Register a new user")
+            .WithSummary("Registrar un nuevo usuario")
             .WithDescription(
-                "This endpoint allows you to register a new ruser by providing the necessary details in the payload. "
-                    + "The payload must include the user name and other required information. "
-                    + "It returns the registered user details upon successful registration."
+                "Este endpoint permite registrar un nuevo usuario proporcionando los detalles necesarios en el payload. "
+                    + "El payload debe incluir el nombre del usuario y otra información requerida. "
+                    + "Devuelve los detalles del usuario registrado al ser exitosamente registrado."
             )
             .WithTags("Users");
     }

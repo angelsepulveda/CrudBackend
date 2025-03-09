@@ -32,9 +32,7 @@ public class User : Entity<UserId>
 
     public void Update(string name, string rut, string? email, DateTime birthdate)
     {
-        if (string.IsNullOrEmpty(email))
-            Email = null;
-
+        Email = string.IsNullOrEmpty(email) ? null : email;
         Name = name;
         Rut = rut;
         Birthdate = birthdate;
