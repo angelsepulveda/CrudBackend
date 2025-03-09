@@ -6,6 +6,7 @@ public class DeleteUserEndpoint : ICarterModule
     {
         app.MapDelete(
                 "/api/users/{Id:guid}",
+                [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
                 async (Guid Id, ISender sender) =>
                 {
                     Unit result = await sender.Send(new DeleteUserCommand(Id));

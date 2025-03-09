@@ -24,21 +24,24 @@ public static class MembershipsModule
             }
         );
 
-        services.AddMembershipSubModules();
+        services.AddMembershipSubModules(configuration);
 
         return services;
     }
 
     public static IApplicationBuilder UseMembershipModule(this IApplicationBuilder app)
     {
-        app.UseMigration<MembershipDbContext>();
+        //app.UseMigration<MembershipDbContext>();
 
         return app;
     }
 
-    private static IServiceCollection AddMembershipSubModules(this IServiceCollection services)
+    private static IServiceCollection AddMembershipSubModules(
+        this IServiceCollection services,
+        IConfiguration configuration
+    )
     {
-        services.AddSubModuleUsers();
+        services.AddSubModuleUsers(configuration);
 
         return services;
     }

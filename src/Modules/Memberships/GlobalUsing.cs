@@ -18,3 +18,8 @@ global using Shared.Exceptions;
 global using Shared.Constants;
 global using Serilog;
 global using System.Text.Json;
+global using Microsoft.AspNetCore.Authorization;
+global using Microsoft.AspNetCore.Mvc;
+global using System.Security.Claims;
+global using Microsoft.AspNetCore.Authentication.JwtBearer;
+global using Microsoft.AspNetCore.Authentication;

@@ -8,6 +8,7 @@ public class GetAllUserEndpoint : ICarterModule
     {
         app.MapGet(
                 "/api/users",
+                [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
                 async (ISender sender) =>
                 {
                     List<UserDto> roles = await sender.Send(new GetAllUserQuery());

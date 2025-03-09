@@ -4,9 +4,12 @@ namespace Memberships.Submodules.Users;
 
 public static class DependencyInjection
 {
-    public static IServiceCollection AddSubModuleUsers(this IServiceCollection services)
+    public static IServiceCollection AddSubModuleUsers(
+        this IServiceCollection services,
+        IConfiguration configuration
+    )
     {
-        services.AddUsersServices();
+        services.AddUsersServices(configuration);
 
         return services;
     }

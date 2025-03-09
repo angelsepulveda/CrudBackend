@@ -8,6 +8,7 @@ public class RegisterRoleEndpoint : ICarterModule
     {
         app.MapPost(
                 "/api/users",
+                [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
                 async (RegisterUserPayload payload, ISender sender) =>
                 {
                     string endpoint = nameof(RegisterRoleEndpoint);

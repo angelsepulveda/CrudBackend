@@ -6,6 +6,7 @@ public class UpdateRoleEndpoint : ICarterModule
     {
         app.MapPut(
                 "/api/users",
+                [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
                 async (UpdateUserPayload payload, ISender sender) =>
                 {
                     Log.Information(

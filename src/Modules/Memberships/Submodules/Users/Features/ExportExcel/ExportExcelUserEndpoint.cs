@@ -6,6 +6,7 @@ public class ExportExcelUserEndpoint : ICarterModule
     {
         app.MapGet(
                 "/api/users/export",
+                [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
                 async (ISender sender) =>
                 {
                     MemoryStream files = await sender.Send(new ExportExcelUserQuery());
