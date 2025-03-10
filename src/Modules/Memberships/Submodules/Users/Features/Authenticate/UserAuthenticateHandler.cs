@@ -17,7 +17,16 @@ public sealed class UserAuthenticateHandler(
         CancellationToken cancellationToken
     )
     {
+        string feature = nameof(UserAuthenticateHandler);
+
         string token = request.Token;
+
+        Log.Information(
+            "Feature: {Feature}, inicio de sesion de usuario request: {Request} y token:{Token}",
+            feature,
+            JsonSerializer.Serialize(request),
+            token
+        );
 
         UserProfileDto? user = await validateToken.HandleAsync(token);
 
@@ -25,6 +34,8 @@ public sealed class UserAuthenticateHandler(
             throw new BadRequestException("Ocurrio un error al autenticar");
 
         string jwtToken = generateTokenService.Handle(user);
+
+        Log.Information("Feature: {Feature},  se obtiene el token:{Token}", feature, token);
 
         return jwtToken;
     }
