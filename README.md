@@ -33,8 +33,6 @@ Este proyecto es una API CRUD desarrollada en .NET 8. Proporciona una estructura
 
 Para construir y ejecutar la API localmente:
 
-Para construir la imagen de la database:
-
 1. Construye la imagen de Docker de sqlserver y levantarlo (opcional: Si tiene un servidor sql server puede utilizar ese o si no levanta la imagen docker):
     ```sh
     docker-compose up -d
