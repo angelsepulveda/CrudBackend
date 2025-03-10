@@ -48,6 +48,9 @@ Para construir y ejecutar la API localmente:
     ```sh
     dotnet run --project src/Bootstrapper/Api/Api.csproj
     ```
+    si por alguna razon no se pueden arrancar con el puerto 7148 con https y tienen que usar otro puerto contactese con angel sepulveda angelsepulvedach@gmail.com para asi en google cloud autorizar el puerto que vayan a utilizar para la autentificacion funcione correctamente.
+
+npm run dev
 
 ## Uso
 
